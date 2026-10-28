@@ -1,0 +1,34 @@
+id = "herdr-pane-labels"
+name = "Herdr Pane Labels"
+version = "0.1.0"
+min_herdr_version = "0.8.2"
+description = "Show each pane ID together with its detected agent in the pane border"
+platforms = ["macos", "linux"]
+
+[[startup]]
+command = ["./bin/run", "sync"]
+
+[[actions]]
+id = "sync"
+title = "Refresh pane labels"
+command = ["./bin/run", "sync"]
+
+[[events]]
+id = "pane-labels-created"
+on = "pane.created"
+command = ["./bin/run", "sync"]
+
+[[events]]
+id = "pane-labels-focused"
+on = "pane.focused"
+command = ["./bin/run", "sync"]
+
+[[events]]
+id = "pane-labels-agent-detected"
+on = "pane.agent_detected"
+command = ["./bin/run", "sync"]
+
+[[events]]
+id = "pane-labels-agent-status"
+on = "pane.agent_status_changed"
+command = ["./bin/run", "sync"]
